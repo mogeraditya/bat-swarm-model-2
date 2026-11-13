@@ -1,0 +1,39 @@
+defaults:
+  - arena: default
+  - bat: default
+  - override hydra/sweeper: optuna
+  - override hydra/sweeper/sampler: GridSampler
+  - override hydra/launcher: joblib
+  - override hydra/job_logging: colorlog
+  - override hydra/hydra_logging: colorlog
+  - _self_
+
+hydra:
+  sweep:
+    dir: /media/adityamoger/T7/${hydra.job.name}/
+  sweeper:
+    # dir: /media/adityamoger/T7/${hydra.job.name}/${hydra.job.num}
+    sampler:
+      seed: 61
+      population_size: 20
+      mutation_prob: 0.1
+      crossover_prob: 0.9
+      swapping_prob: 0.5
+      constraints_func: null
+    direction: [minimize, maximize]
+    storage: sqlite:///optimization_sweep_w_sensitivity_params.db
+    study_name: optimize_for_passive
+    n_trials: 750
+    n_jobs: 20
+    params:
+      bat.LOUDNESS_TIME_DELAY_CAP: range(0.008, 0.060, step=0.020)
+      # bat.ROTATION_TIME_DELAY_CAP: range(0.012, 0.052, step=0.010)
+      bat.SPL_THRESHOLD_FOR_ATTRACTION: choice(60,70,80)
+      bat.SPL_THRESHOLD_FOR_REPULSION: choice(70,80,90)
+      bat.SUSTAIN_SOUNDS: range(1, 9, step=3)
+      bat.ANGLE_RANGE_FOR_REPULSION: range(30, 100, step=30)
+      # bat.BAT_FRONTAL_RANGE: range(30, 180, step=30)
+      bat.ANGLE_RANGE_FOR_ATTRACTION: range(30, 100, step=30)
+      # arena.seed: choice(80085)
+  launcher:
+    n_jobs: 20
