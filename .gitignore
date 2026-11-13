@@ -167,7 +167,7 @@ cython_debug/
 *.mp4
 *.csv
 # .vscode/
-*.json
+# *.json
 *.npz
 *.yaml
 *.png
