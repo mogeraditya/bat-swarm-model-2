@@ -10,7 +10,9 @@ if __name__ == "__main__":
     #           show_sounds=True, focal_bat=0)
 
     # Only want the arena + sensory volume + text counters this time:
-    OUTPUT_DIR = r"./outputs/2026-11-13/22-15-24/"
+    OUTPUT_DIR = (
+        r"/home/adityamoger/Documents/GitHub/claude-bs/multirun/2026-11-16/16-13-44/1/"
+    )
     visualize(
         output_dir=OUTPUT_DIR,
         save_animation=OUTPUT_DIR,

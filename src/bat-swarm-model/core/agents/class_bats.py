@@ -166,12 +166,12 @@ class Bat:
             temporal_masking_file (csv): temporal masking function to use for the agent.
         """
 
-        # move the agent based on its velocity and position at last step.
-        self.update_movement()
         # check if the agent needs to emit echolocation call.
         self.emit_sounds(current_time, sound_objects)
         # check if the agent needs to update its direction, based on if sufficient time has passed
         self.update_direction(current_time, sound_objects, temporal_masking_file)
+        # move the agent based on its velocity and position at last step.
+        self.update_movement()
 
         # TODO : just make sure egocentric is truly egocentric everywhere.
         # check if the reference frame is egocentric as the frame needs to be changed every timestep
@@ -634,11 +634,11 @@ class Bat:
         #     abs(angle_between_current_and_new) > self._angular_resolution_rad
         #     and not is_bat_processing
         # ):
-        if current_direction != new_direction and not is_bat_processing:
+        if np.abs(angle_between_current_and_new) > 1e-10:
 
             self.is_bat_rotating = True
 
-            self.speed = self.parameters_df["BAT_SLOW_SPEED"]
+            # self.speed = self.parameters_df["BAT_SLOW_SPEED"]
             self.rotation_speed = self.parameters_df["BAT_ROTATION_SPEED"]
 
             rotation_rate = self._rotation_rate
@@ -652,17 +652,21 @@ class Bat:
 
             rotated_vector = current_direction.rotate(rotation_angle)
             self.direction = rotated_vector.normalize()
+
+        elif np.abs(angle_between_current_and_new) < 1e-10:
+            self.is_bat_rotating = False
+            self.speed = self.parameters_df["BAT_FAST_SPEED"]
+            self.rotation_speed = 0
         else:
             self.is_bat_rotating = False
 
-        # elif current_direction.angle_between(new_direction) <= np.radians(15):
-        #     self.speed = self.parameters_df["BAT_FAST_SPEED"]
-        # if abs(angle_between_current_and_new) > np.radians(30):
-        #     self.speed = self.parameters_df["BAT_SLOW_SPEED"]
-        # else:
-        #     self.speed = self.parameters_df["BAT_FAST_SPEED"]
-        if self.any_consistent_sound == "no":
+        if self.is_bat_rotating:
+            self.speed = self.parameters_df["BAT_SLOW_SPEED"]
+        else:
             self.speed = self.parameters_df["BAT_FAST_SPEED"]
+
+        # if self.any_consistent_sound == "no":
+        #     self.speed = self.parameters_df["BAT_FAST_SPEED"]
 
     def modulate_call_rate(self):
         """Change call rate and speed if conditions are met."""

@@ -65,7 +65,7 @@ def merge_summary_files(results_dir, output_file=None):
     if output_file is None:
         output_file = results_dir + f"/summary_all_jobs.csv"
 
-    summary_files = glob.glob(results_dir + "/*/summary_dataframe_job_*.csv")
+    summary_files = glob.glob(results_dir + "/*/*/*/summary_dataframe_job_*.csv")
     # print(summary_files)
     merged_df = pd.concat(
         (

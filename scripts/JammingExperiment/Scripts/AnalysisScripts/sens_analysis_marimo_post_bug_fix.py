@@ -26,7 +26,7 @@ def _():
 
 @app.cell
 def _(pd):
-    scores_dataframe = pd.read_csv("./Data/AnalysisData/summary_merged_post_bug_fix.csv")
+    scores_dataframe = pd.read_csv("./Data/AnalysisData/summary_merged_12_11.csv")
     scores_dataframe = scores_dataframe[scores_dataframe["distance travelled"]>70]
     scores_dataframe["seed"] = scores_dataframe["seed"].astype("category")
     return (scores_dataframe,)
@@ -428,10 +428,11 @@ def _(np, scores_dataframe):
 
 
 @app.cell
-def _(np, scores_dataframe, slider_collision):
+def _(np, scores_dataframe):
     np.percentile(scores_dataframe["wall collision total"], 10)
 
-    dataframe = scores_dataframe[scores_dataframe["wall collision total"]<=slider_collision.value][scores_dataframe["duration"]<=np.percentile(scores_dataframe["duration"], 10)][scores_dataframe["space_occupied"]>=np.percentile(scores_dataframe["space_occupied"], 90)]
+    dataframe = scores_dataframe[scores_dataframe["wall collision total"]<=np.percentile(scores_dataframe["wall collision total"], 10)][scores_dataframe["duration"]<=np.percentile(scores_dataframe["duration"], 10)][scores_dataframe["space_occupied"]>=np.percentile(scores_dataframe["space_occupied"], 90)]
+    dataframe
     return (dataframe,)
 
 

@@ -157,6 +157,7 @@ def run_simulation(cfg: DictConfig) -> None:
     #     f"duration: {df_score_summary["duration"][0]/1000:.2f} s"
     # )
     scores_text = (
+        f"Num Bats: {df_score_summary["NUM_BATS"][0]}\n"
         f"Wall Collisions: {wall_collision_count}\n"
         f"Space Occupied: {df_score_summary['space_occupied'][0]:.2f} m\u00b2\n"
         f"Duration: {df_score_summary['duration'][0]/1000:.2f} s\n"
@@ -181,7 +182,7 @@ def run_simulation(cfg: DictConfig) -> None:
         bbox=dict(boxstyle="round,pad=0.3", facecolor="lightgray", alpha=0.8),
         transform=fig.transFigure,
     )
-    plt.tight_layout(rect=[0, 0, 0.85, 1])
+    # plt.tight_layout(rect=[0, 0, 0.85, 1])
 
     sns.despine()
     plt.savefig(hydra_parent_dir + f"/traj_{hydra_job_num}.png")

@@ -9,5 +9,5 @@ sys.path.extend(
 )
 from data_storage.combine_files_post_storage import merge_summary_files
 
-data_storage_dir = "/media/adityamoger/T7/GroupExperiment/2026-11-11/23-40-09/"
+data_storage_dir = "/home/adityamoger/Documents/claude_code_stuff/"
 merge_summary_files(data_storage_dir, data_storage_dir + "summary_merged_12_11.csv")
