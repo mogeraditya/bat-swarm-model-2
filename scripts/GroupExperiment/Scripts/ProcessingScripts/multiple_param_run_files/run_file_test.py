@@ -24,5 +24,5 @@ print("Starting parallel processing...")
 parallel_process_with_pool(
     param_dir=PARAM_DIR,
     data_storage_dir=DATA_STORAGE_DIR,
-    max_workers=5,
+    max_workers=15,
 )
