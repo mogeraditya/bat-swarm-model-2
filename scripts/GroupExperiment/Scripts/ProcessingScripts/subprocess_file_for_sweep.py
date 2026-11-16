@@ -3,7 +3,7 @@ import subprocess
 # import hydra
 
 # Parameters to vary
-NUM_BATS_VALUES = [5]
+NUM_BATS_VALUES = [5, 10, 30]
 SEEDS = [
     1307,
     521,

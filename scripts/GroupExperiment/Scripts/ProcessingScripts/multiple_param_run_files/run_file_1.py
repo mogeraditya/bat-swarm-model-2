@@ -19,11 +19,8 @@ DATA_STORAGE_DIR = r"./group_multirun_analysis_1/"  # Base output directory
 # Run parallel processing
 print("Starting parallel processing...")
 
-chosen_start_location = Vector(4.5, 2.5)
-
 parallel_process_with_pool(
     param_dir=PARAM_DIR,
     data_storage_dir=DATA_STORAGE_DIR,
     max_workers=None,
-    initial_release_point=chosen_start_location,
 )
