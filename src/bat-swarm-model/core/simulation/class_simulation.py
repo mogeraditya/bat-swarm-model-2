@@ -376,16 +376,16 @@ class Simulation:
             "bat_intensity_matrix_for_consistency": [
                 bat.sum_grids_in_memory_intensity for bat in self.bats
             ],
-            "polarization_score": compute_polarization(bat_directions),
-            "local_polarization_score": local_polarization_mean,
-            "local_polarization_score_list": [
-                local_polarization_list[bat.id] for bat in self.bats
-            ],
-            "local_density_score": local_density_mean,
-            "local_density_score_list": [
-                local_density_list[bat.id] for bat in self.bats
-            ],
-            "milling_score": compute_milling(bat_directions, bat_positions),
+            # "polarization_score": compute_polarization(bat_directions),
+            # "local_polarization_score": local_polarization_mean,
+            # "local_polarization_score_list": [
+            #     local_polarization_list[bat.id] for bat in self.bats
+            # ],
+            # "local_density_score": local_density_mean,
+            # "local_density_score_list": [
+            #     local_density_list[bat.id] for bat in self.bats
+            # ],
+            # "milling_score": compute_milling(bat_directions, bat_positions),
         }
 
         return dictionary_w_information
