@@ -1,5 +1,5 @@
 {
-    "SIM_DURATION": 60,
+    "SIM_DURATION": 30,
     "TIME_STEP": 0.001,
     "DISTANCE_CAP": 70,
     "NUM_BATS": 100,
@@ -14,7 +14,7 @@
     "REFLECTION_LOSS_WALL": 10,
     "FRAME_RATE": 100,
     "CLEANUP_INTERVAL": 0.1,
-    "CLEANUP_PLOT_DATA": 5000,
+    "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
     "seed": 9513,
@@ -56,5 +56,5 @@
     "STORE_HEARING": "yes",
     "control_type": "treatment",
     "PARAM_LABEL": "paramset_2608",
-    "PARAM_UUID": "d5088837-9cb3-466f-ac3a-b2655e27433c"
+    "PARAM_UUID": "7a786449-c3a9-444d-b615-9321be209a4f"
 }
