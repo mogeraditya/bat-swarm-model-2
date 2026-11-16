@@ -190,7 +190,7 @@ class Simulation:
             self.rounding_based_on_time_step,
         )
 
-        for time_step in tqdm(time_array[1:]):
+        for time_step in time_array[1:]:
             # print(time_step)
             # try:
             self.time_elapsed = time_step
