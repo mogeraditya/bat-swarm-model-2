@@ -163,6 +163,10 @@ def given_history_list_generate_score_files(
     dataframe_timeseries = dict(zip(list_of_keys_timeseries, list_of_timeseries_scores))
     dataframe_timeseries = pd.DataFrame.from_dict(dataframe_timeseries)
 
+    time_spent_rotating_score = compute_time_spent_rotating(
+        history_lists, parameters_df
+    )
+
     list_of_score_summary = [
         [job_id],
         [run_id],
@@ -171,6 +175,7 @@ def given_history_list_generate_score_files(
         [batbat_collision_counter],
         [wall_collision_counter],
         [space_occupied_counter],
+        [np.max(time_spent_rotating_score)],
         [np.mean(polarization_list)],
         [np.std(polarization_list)],
         [np.mean(milling_list)],
@@ -185,6 +190,7 @@ def given_history_list_generate_score_files(
         "interbat collision total",
         "wall collision total",
         "space_occupied",
+        "time_spent_rotating",
         "mean polarization",
         "std polarization",
         "mean milling",

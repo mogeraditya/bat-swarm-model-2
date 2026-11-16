@@ -29,6 +29,7 @@ SOUND_SPEED: 343
 AIR_ABSORPTION: 1
 seed: 67
 arena_size_scaling: "fixed"
+control_type: "treatment"
 
 # TODO: redundant
 OUTPUT_DIR_FOR_SIMULATION: "BLANK_TEST"

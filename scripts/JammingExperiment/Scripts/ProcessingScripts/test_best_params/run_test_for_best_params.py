@@ -130,20 +130,20 @@ def run_simulation(cfg: DictConfig) -> None:
 
     s_bat = real_size_to_scatter_size(0.125, fig, 9)
     s_obstacle = real_size_to_scatter_size(0.04, fig, 9)
-    hull = ConvexHull(positions)
+    # hull = ConvexHull(positions)
 
     sns.scatterplot(x=x, y=y, color="black", alpha=0.2, ax=ax, s=s_bat)
 
     ax.scatter(*positions[0], c="#55A868", s=120, label="Start", zorder=3)
     ax.scatter(*positions[-1], c="#C44E52", s=120, label="End", zorder=3)
-    for simplex in hull.simplices:
-        ax.plot(positions[simplex, 0], positions[simplex, 1], "r-", linewidth=2)
-    ax.fill(
-        positions[hull.vertices, 0],
-        positions[hull.vertices, 1],
-        alpha=0.2,
-        color="lightgreen",
-    )
+    # for simplex in hull.simplices:
+    #     ax.plot(positions[simplex, 0], positions[simplex, 1], "r-", linewidth=2)
+    # ax.fill(
+    #     positions[hull.vertices, 0],
+    #     positions[hull.vertices, 1],
+    #     alpha=0.2,
+    #     color="lightgreen",
+    # )
 
     ax.set(xlim=(0, 9), ylim=(0, 5), aspect="equal")
     # ax.legend(
@@ -170,6 +170,7 @@ def run_simulation(cfg: DictConfig) -> None:
         f"Consistency Delay: {df_score_summary["CONSISTENCY_TIME_DELAY_CAP"][0]:.3f}s\n"
         f"Consistency Window: {df_score_summary["MEMORY_WINDOW_FOR_CONSISTENCY"][0]}\n"
         f"Jammer Resolution: {df_score_summary["JAMMER_RESOLUTION"][0]:.3f}m\n"
+        f"control type: {df_score_summary["control_type"][0]}\n"
     )
 
     fig.text(

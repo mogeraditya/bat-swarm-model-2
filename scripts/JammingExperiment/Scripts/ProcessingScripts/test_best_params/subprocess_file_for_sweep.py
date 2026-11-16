@@ -3,17 +3,18 @@ import subprocess
 # import hydra
 
 # Parameters to vary
-NUM_BATS_VALUES = [5, 10, 30]
+NUM_BATS_VALUES = [5]
 SEEDS = [666, 677, 667, 888, 777]
 CALL_RATES_FAST = [20]
 CALL_DIRECTIONALITYS = [7]
 HEARING_THRESHOLDS = [60]
-RADIAL_RESOLUTIONS = [0.002, 0.004]
+RADIAL_RESOLUTIONS = [0.002]
 ANGULAR_RESOLUTIONS = [15]
 BAT_FRONTAL_RANGES = [60]
-CONSISTENCY_TIME_DELAY_CAPS = [0.011, 0.014]
-CONSISTENCY_WINDOWS = [1, 3, 5, 7, 10]
+CONSISTENCY_TIME_DELAY_CAPS = [0.014]
+CONSISTENCY_WINDOWS = [3]
 JAMMER_RESOLUTIONS = [1000]
+CONTROLLER_TYPES = ["treatment", "positive_control", "negative_control", "null_control"]
 N_JOBS = 15
 
 
@@ -34,6 +35,7 @@ def main():
             f"bat.CONSISTENCY_TIME_DELAY_CAP={','.join(map(str, CONSISTENCY_TIME_DELAY_CAPS))}",
             f"bat.MEMORY_WINDOW_FOR_CONSISTENCY={','.join(map(str, CONSISTENCY_WINDOWS))}",
             f"arena.JAMMER_RESOLUTION={','.join(map(str, JAMMER_RESOLUTIONS))}",
+            f"arena.control_type={','.join(map(str, CONTROLLER_TYPES))}",
             f"hydra.launcher.n_jobs={N_JOBS}",
         ],
         check=True,

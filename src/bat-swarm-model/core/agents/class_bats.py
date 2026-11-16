@@ -117,6 +117,8 @@ class Bat:
 
         self.is_bat_rotating = False
         self.log_distance_moved = 0
+        self.controller_type = self.parameters_df["control_type"]
+        # print(self.parameters_df["control_type"])
 
         self._cache_parameters()
 
@@ -346,6 +348,8 @@ class Bat:
             if sound.reflected_from == self_reflection_key:  # TODO : FLAGGGGGGGGG!!!!
                 continue
 
+            if self.check_sound_not_heard_based_on_controller_type(sound):
+                continue
             # quick reject on the unrounded squared distance; the margin is far
             # larger than the effect of Vector's 5-decimal rounding, so only
             # sounds that are clearly outside the shell are skipped here.
@@ -675,6 +679,18 @@ class Bat:
         else:
             # self.speed = self.parameters_df["BAT_SLOW_SPEED"]
             self.call_rate = self.parameters_df["CALL_RATE"]
+
+    def check_sound_not_heard_based_on_controller_type(self, sound):
+        if self.controller_type == "treatment":
+            return False
+        elif self.controller_type == "positive_control":
+            return bool(sound.emitter_id != self.id)
+        elif self.controller_type == "negative_control":
+            return bool(sound.emitter_id == self.id)
+        elif self.controller_type == "null_control":
+            return True
+        else:
+            raise ValueError("Controller type not recognised")
 
     def __repr__(self):
         return f"Bat(id={self.id}, position={self.position})"
