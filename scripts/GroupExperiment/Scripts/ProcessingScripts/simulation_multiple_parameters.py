@@ -77,6 +77,7 @@ def run_one_instance_of_simulation(dir_of_one_param_file, data_storage_dir):
         #     os.remove(job_dir + "/" + filepath)
         if "_initial.pkl" in filepath:
             os.remove(job_dir + "/" + filepath)
+
         # elif ".pkl.gz" in filepath:
         #     os.remove(job_dir + "/" + filepath)
 
