@@ -47,38 +47,38 @@ def run_one_instance_of_simulation(dir_of_one_param_file, data_storage_dir):
     )
     make_dir(job_dir)
 
-    # sim = Simulation(
-    #     parameter_df,
+    sim = Simulation(
+        parameter_df,
+        job_dir,
+        store_history=True,
+        store_data_for_plotting=True,
+        use_hydra=False,
+        termination_criteria="time",
+    )
+
+    sim.run()
+
+    # history_list = stitch_together_pickle_history_lists_and_store(
     #     job_dir,
-    #     store_history=True,
-    #     store_data_for_plotting=True,
-    #     use_hydra=False,
-    #     termination_criteria="time",
+    #     job_dir,
+    #     f"job_number_{job_num}",
     # )
 
-    # sim.run()
-
-    history_list = stitch_together_pickle_history_lists_and_store(
-        job_dir,
-        job_dir,
-        f"job_number_{job_num}",
-    )
-
-    given_history_list_generate_score_files(
-        history_list,
-        job_dir,
-        job_uuid,
-        job_num,
-        range_of_distance_for_local_score=np.arange(0.5, 4, 0.5),
-    )
+    # given_history_list_generate_score_files(
+    #     history_list,
+    #     job_dir,
+    #     job_uuid,
+    #     job_num,
+    #     range_of_distance_for_local_score=np.arange(0.5, 4, 0.5),
+    # )
 
     for filepath in os.listdir(job_dir):
-        if "history" in filepath or ".json" in filepath:
+        # if "history" in filepath or ".json" in filepath:
+        #     os.remove(job_dir + "/" + filepath)
+        if "_initial.pkl" in filepath:
             os.remove(job_dir + "/" + filepath)
-        elif "_initial.pkl" in filepath:
-            os.remove(job_dir + "/" + filepath)
-        elif ".pkl.gz" in filepath:
-            os.remove(job_dir + "/" + filepath)
+        # elif ".pkl.gz" in filepath:
+        #     os.remove(job_dir + "/" + filepath)
 
     os.remove(dir_of_one_param_file)
 
