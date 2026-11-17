@@ -9,7 +9,7 @@
 #SBATCH --job-name=dynamic_model
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=aditya.moger@uni-konstanz.de
-
+#SBATCH --mem 1024G
 
 # Recommended: prevent nested threading inside each worker process
 # export OMP_NUM_THREADS=1
