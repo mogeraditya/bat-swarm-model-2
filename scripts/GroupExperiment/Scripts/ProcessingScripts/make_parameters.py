@@ -24,34 +24,34 @@ make_dir(dir_to_store)
 
 
 # Only parameters with more than one value are included in the sweep.
-NUM_BATS_VALUES = [5]  # , 10, 30, 50, 75, 100]
+NUM_BATS_VALUES = [5, 10, 30, 50, 75, 100]
 
 SEEDS = [
     13207,
-    # 52173,
-    # 71521,
-    # 26942,
-    # 15214,
-    # 42699,
-    # 89198,
-    # 88210,
-    # 95113,
-    # 64322,
-    # 90140,
-    # 40197,
-    # 71904,
-    # 46162,
-    # 31025,
-    # 97367,
-    # 42262,
-    # 13247,
-    # 29932,
-    # 38342,
+    52173,
+    71521,
+    26942,
+    15214,
+    42699,
+    89198,
+    88210,
+    95113,
+    64322,
+    90140,
+    40197,
+    71904,
+    46162,
+    31025,
+    97367,
+    42262,
+    13247,
+    29932,
+    38342,
 ]
 
 CONSISTENCY_TIME_DELAY_CAPS = [0.011, 0.014]
-CONSISTENCY_WINDOWS = [3, 5, 7]
-LOUDNESS_TIME_DELAY_CAPS = [0.0]
+CONSISTENCY_WINDOWS = [1, 3, 5, 7]
+LOUDNESS_TIME_DELAY_CAPS = [0.0, 0.030]
 
 CONTROLLER_TYPES = [
     "treatment",
