@@ -9,7 +9,13 @@ def convert_matrix_to_one_hot(m):
 
 
 def convert_matrix_to_db(m):
-    return np.where(m > 0, 20 * np.log10(m, where=m > 0), 0)
+    m = np.asarray(m)
+    result = np.zeros(m.shape, dtype=float)
+
+    positive = m > 0
+    result[positive] = 20 * np.log10(m[positive])
+
+    return result
 
 
 def given_parameters_df_return_grid_matrix_zeros(p):

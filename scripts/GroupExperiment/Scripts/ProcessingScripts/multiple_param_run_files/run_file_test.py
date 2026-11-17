@@ -15,7 +15,7 @@ from supporting_files.vectors import Vector
 PARAM_DIR = (
     "./scripts/GroupExperiment/Data/InputData/group_multirun/group_multirun_test/"
 )
-DATA_STORAGE_DIR = r"./group_multirun_analysis_test/"  # Base output directory
+DATA_STORAGE_DIR = r"./group_multirun_analysis_test_4/"  # Base output directory
 # MAX_WORKERS = 4  # Limit number of parallel processes
 
 # Run parallel processing
@@ -24,5 +24,5 @@ print("Starting parallel processing...")
 parallel_process_with_pool(
     param_dir=PARAM_DIR,
     data_storage_dir=DATA_STORAGE_DIR,
-    max_workers=15,
+    max_workers=None,
 )

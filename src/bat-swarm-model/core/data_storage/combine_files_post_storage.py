@@ -25,7 +25,9 @@ def stitch_together_pickle_history_lists_and_store(
     list_of_dict_files = np.sort(list_of_dict_files)
 
     list_containing_data_from_all_pickle_files = []
-    for pickle_file in tqdm(list_of_dict_files, desc="reading dict files "):
+    for (
+        pickle_file
+    ) in list_of_dict_files:  # tqdm(list_of_dict_files, desc="reading dict files "):
         with gzip.open(pickle_file, "rb") as f:
             _list_containing_subset = pickle.load(f)
             list_containing_data_from_all_pickle_files.extend(_list_containing_subset)
@@ -63,7 +65,7 @@ def merge_summary_files(results_dir, output_file=None):
         DataFrame: merged summary, one row per job.
     """
     if output_file is None:
-        output_file = results_dir + f"/summary_all_jobs.csv"
+        output_file = results_dir + "/summary_all_jobs.csv"
 
     summary_files = glob.glob(results_dir + "/*/*/*/summary_dataframe_job_*.csv")
     # print(summary_files)

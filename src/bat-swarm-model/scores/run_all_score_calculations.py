@@ -96,6 +96,7 @@ def given_history_list_generate_score_files(
     job_id,
     range_of_distance_for_local_score,
 ):
+    print(f"computing scores for {job_id} {run_id}")
     distance_covered = history_lists[-1]["bat_distance_covered"][0]
     bat_positions_list, bat_directions_list = filter_bat_positions_from_history(
         history_lists
@@ -205,13 +206,14 @@ def given_history_list_generate_score_files(
     merged_dict_with_params = dict_score_summary | parameters_df
     dataframe_score_summary = pd.DataFrame.from_dict(merged_dict_with_params)
 
+    print(f"done computing, saving scores for {job_id} {run_id}")
     dataframe_timeseries.to_csv(
         data_dir + f"/timeseries_dataframe_job_{job_id}_run{run_id}.csv"
     )
     dataframe_score_summary.to_csv(
         data_dir + f"/summary_dataframe_job_{job_id}_run{run_id}.csv"
     )
-
+    print(f"Saved! scores for {job_id} {run_id}")
     return dataframe_score_summary, batbat_collision_counter, wall_collision_counter
 
 
