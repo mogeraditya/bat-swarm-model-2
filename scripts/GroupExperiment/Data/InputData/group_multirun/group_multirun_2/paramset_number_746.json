@@ -2,7 +2,7 @@
     "SIM_DURATION": 30,
     "TIME_STEP": 0.001,
     "DISTANCE_CAP": 70,
-    "NUM_BATS": 10,
+    "NUM_BATS": 5,
     "JAMMER_RESOLUTION": 0.8,
     "OBSTACLE_COUNT": 0,
     "OBSTACLE_RADIUS": 0.075,
@@ -42,7 +42,7 @@
     "SPATIAL_REFERENCE_FRAME": "allocentric",
     "TEMPORAL_MASKING_FN_TYPE": "full",
     "BAT_FRONTAL_RANGE": 30,
-    "CONSISTENCY_TIME_DELAY_CAP": 0.011,
+    "CONSISTENCY_TIME_DELAY_CAP": 0.014,
     "MEMORY_WINDOW_FOR_CONSISTENCY": 3,
     "CONVERT_GRIDS_TO_ONE_HOT": "yes",
     "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 2,
@@ -56,5 +56,5 @@
     "STORE_HEARING": "yes",
     "control_type": "negative_control",
     "PARAM_LABEL": "paramset_746",
-    "PARAM_UUID": "5d75b01b-a8af-4d8d-b8c9-78c7baf2408f"
+    "PARAM_UUID": "cf3da15d-cd06-49a1-9b4c-679330564f6e"
 }

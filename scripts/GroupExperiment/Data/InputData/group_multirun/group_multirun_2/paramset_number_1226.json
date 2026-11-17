@@ -2,7 +2,7 @@
     "SIM_DURATION": 30,
     "TIME_STEP": 0.001,
     "DISTANCE_CAP": 70,
-    "NUM_BATS": 30,
+    "NUM_BATS": 5,
     "JAMMER_RESOLUTION": 0.8,
     "OBSTACLE_COUNT": 0,
     "OBSTACLE_RADIUS": 0.075,
@@ -17,7 +17,7 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 40197,
+    "seed": 38342,
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_1226/",
     "BAT_RADIUS": 0.125,
     "BAT_SLOW_SPEED": 1,
@@ -56,5 +56,5 @@
     "STORE_HEARING": "yes",
     "control_type": "negative_control",
     "PARAM_LABEL": "paramset_1226",
-    "PARAM_UUID": "609885ea-2439-4d37-8d64-57457729bc26"
+    "PARAM_UUID": "8fecc8b9-87d4-4c22-bc6c-0582b734df32"
 }

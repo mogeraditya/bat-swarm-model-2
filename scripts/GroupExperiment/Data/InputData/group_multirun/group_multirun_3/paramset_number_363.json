@@ -17,7 +17,7 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 97367,
+    "seed": 42699,
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_363/",
     "BAT_RADIUS": 0.125,
     "BAT_SLOW_SPEED": 1,
@@ -42,7 +42,7 @@
     "SPATIAL_REFERENCE_FRAME": "allocentric",
     "TEMPORAL_MASKING_FN_TYPE": "full",
     "BAT_FRONTAL_RANGE": 30,
-    "CONSISTENCY_TIME_DELAY_CAP": 0.011,
+    "CONSISTENCY_TIME_DELAY_CAP": 0.014,
     "MEMORY_WINDOW_FOR_CONSISTENCY": 3,
     "CONVERT_GRIDS_TO_ONE_HOT": "yes",
     "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 2,
@@ -56,5 +56,5 @@
     "STORE_HEARING": "yes",
     "control_type": "null_control",
     "PARAM_LABEL": "paramset_363",
-    "PARAM_UUID": "76c48772-3f11-40c4-b848-74391cb02b3d"
+    "PARAM_UUID": "c4cd9160-313b-4fce-9a45-c219d5579ac4"
 }

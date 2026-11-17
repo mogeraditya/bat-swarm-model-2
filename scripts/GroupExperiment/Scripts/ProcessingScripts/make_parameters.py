@@ -105,7 +105,7 @@ for item in list_of_combinations:
 
     # Distribute the generated files across eight directories.
     mod_bin = output_dir_counter % 8
-    output_subdir = dir_to_store + f"/group_multirun_test"  # _{mod_bin}"
+    output_subdir = dir_to_store + f"/group_multirun_{mod_bin}"
     make_dir(output_subdir)
 
     output_file = output_subdir + f"/paramset_number_{output_dir_counter}.json"
