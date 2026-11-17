@@ -18,7 +18,9 @@ sys.path.extend(
 from data_storage.combine_files_post_storage import (  # merge_csvs,
     stitch_together_pickle_history_lists_and_store,
 )
-from scores.run_all_score_calculations import given_history_list_generate_score_files
+from scores.run_all_score_calculations import (
+    given_history_list_generate_score_files_for_sensitivity,
+)
 from simulation.class_simulation import Simulation
 from supporting_files.utilities import load_parameters, make_dir
 from supporting_files.vectors import Vector
@@ -64,7 +66,7 @@ def run_one_instance_of_simulation(dir_of_one_param_file, data_storage_dir):
         f"job_number_{job_num}",
     )
 
-    given_history_list_generate_score_files(
+    given_history_list_generate_score_files_for_sensitivity(
         history_list,
         job_dir,
         job_uuid,
@@ -80,7 +82,7 @@ def run_one_instance_of_simulation(dir_of_one_param_file, data_storage_dir):
         # elif ".pkl.gz" in filepath:
         #     os.remove(job_dir + "/" + filepath)
 
-    os.remove(dir_of_one_param_file)
+    # os.remove(dir_of_one_param_file)
 
 
 def parallel_process_with_pool(

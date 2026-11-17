@@ -24,29 +24,29 @@ make_dir(dir_to_store)
 
 
 # Only parameters with more than one value are included in the sweep.
-NUM_BATS_VALUES = [5, 10, 30, 50, 75, 100]
+NUM_BATS_VALUES = [5]  # , 10, 30, 50, 75, 100]
 
 SEEDS = [
     13207,
-    52173,
-    71521,
-    26942,
-    15214,
-    42699,
-    89198,
-    88210,
-    95113,
-    64322,
-    90140,
-    40197,
-    71904,
-    46162,
-    31025,
-    97367,
-    42262,
-    13247,
-    29932,
-    38342,
+    # 52173,
+    # 71521,
+    # 26942,
+    # 15214,
+    # 42699,
+    # 89198,
+    # 88210,
+    # 95113,
+    # 64322,
+    # 90140,
+    # 40197,
+    # 71904,
+    # 46162,
+    # 31025,
+    # 97367,
+    # 42262,
+    # 13247,
+    # 29932,
+    # 38342,
 ]
 
 CONSISTENCY_TIME_DELAY_CAPS = [0.011, 0.014]
@@ -105,7 +105,7 @@ for item in list_of_combinations:
 
     # Distribute the generated files across eight directories.
     mod_bin = output_dir_counter % 8
-    output_subdir = dir_to_store + f"/group_multirun_{mod_bin}"
+    output_subdir = dir_to_store + f"/group_multirun_test"  # _{mod_bin}"
     make_dir(output_subdir)
 
     output_file = output_subdir + f"/paramset_number_{output_dir_counter}.json"

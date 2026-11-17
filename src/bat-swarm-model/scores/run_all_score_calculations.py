@@ -130,7 +130,7 @@ def given_history_list_generate_score_files(
             compute_local_polarization(
                 bat_directions, bat_positions_list[i], parameters_df, distance, "mean"
             )
-            for i, bat_directions in enumerate(bat_directions_list)
+            for i, bat_directions in enumerate(bat_directions_list[::20])
         ]
         list_of_local_polarization_timeseries.append(local_polarization_list)
         keys_for_local_polarization.append(f"local polarization, range {distance}")
@@ -224,11 +224,16 @@ def given_history_list_generate_score_files_for_sensitivity(
     job_id,
     range_of_distance_for_local_score,
 ):
+    print(f"computing scores for {job_id} {run_id}")
     distance_covered = history_lists[-1]["bat_distance_covered"][0]
     bat_positions_list, bat_directions_list = filter_bat_positions_from_history(
         history_lists
     )
     parameters_df = load_parameters(data_dir + "/parameters_used.json")
+    if len(bat_positions_list) > 10000:
+        bat_positions_list = bat_positions_list[10000:]
+        bat_directions_list = bat_directions_list[10000:]
+
     duration = len(bat_positions_list)
     (
         wall_collision_counter,
@@ -267,8 +272,9 @@ def given_history_list_generate_score_files_for_sensitivity(
 
     merged_dict_with_params = dict_score_summary | parameters_df
     dataframe_score_summary = pd.DataFrame.from_dict(merged_dict_with_params)
-
+    print(f"done computing, saving scores for {job_id} {run_id}")
     dataframe_score_summary.to_csv(data_dir + f"/summary_dataframe_job_{job_id}.csv")
+    print(f"Saved! scores for {job_id} {run_id}")
     return (dataframe_score_summary, batbat_collision_counter, wall_collision_counter)
 
 

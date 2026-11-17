@@ -82,7 +82,7 @@ def run_simulation(cfg: DictConfig) -> None:
         OUTPUT_DIR,
         store_history=True,
         store_data_for_plotting=True,
-        termination_criteria="distance",
+        termination_criteria="time",
     )
 
     sim.run()

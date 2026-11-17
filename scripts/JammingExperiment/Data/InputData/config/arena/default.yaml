@@ -29,7 +29,7 @@ SOUND_SPEED: 343
 AIR_ABSORPTION: 1
 seed: 698
 poisson_disk_radius: 1
-control_type: "null"
+control_type: "treatment"
 
 # TODO: redundant
 OUTPUT_DIR_FOR_SIMULATION: "BLANK_TEST"

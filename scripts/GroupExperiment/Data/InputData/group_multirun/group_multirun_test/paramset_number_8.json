@@ -17,7 +17,7 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 1307,
+    "seed": 13207,
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_8/",
     "BAT_RADIUS": 0.125,
     "BAT_SLOW_SPEED": 1,
@@ -56,5 +56,5 @@
     "STORE_HEARING": "yes",
     "control_type": "treatment",
     "PARAM_LABEL": "paramset_8",
-    "PARAM_UUID": "34de28bf-fbd5-4aa5-9cca-126ae7b8aa1f"
+    "PARAM_UUID": "e733a353-cb30-4f4e-8a34-6fd614a96e04"
 }
