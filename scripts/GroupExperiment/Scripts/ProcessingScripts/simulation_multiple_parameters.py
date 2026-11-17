@@ -72,15 +72,15 @@ def run_one_instance_of_simulation(dir_of_one_param_file, data_storage_dir):
         range_of_distance_for_local_score=np.arange(0.5, 4, 0.5),
     )
 
-    # for filepath in os.listdir(job_dir):
-    #     #     if "history" in filepath or ".json" in filepath:
-    #     #         os.remove(job_dir + "/" + filepath)
-    #     if "_initial.pkl" in filepath:
-    #         os.remove(job_dir + "/" + filepath)
-    #     # elif ".pkl.gz" in filepath:
-    #     #     os.remove(job_dir + "/" + filepath)
+    for filepath in os.listdir(job_dir):
+        if "history_dump" in filepath:
+            os.remove(job_dir + "/" + filepath)
+        if "_initial.pkl" in filepath:
+            os.remove(job_dir + "/" + filepath)
+        # elif ".pkl.gz" in filepath:
+        #     os.remove(job_dir + "/" + filepath)
 
-    # os.remove(dir_of_one_param_file)
+    os.remove(dir_of_one_param_file)
 
 
 def parallel_process_with_pool(
