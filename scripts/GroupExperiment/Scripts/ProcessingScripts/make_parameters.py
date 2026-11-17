@@ -49,10 +49,10 @@ SEEDS = [
     38342,
 ]
 
-CONSISTENCY_TIME_DELAY_CAPS = [0.011, 0.014]
+CONSISTENCY_TIME_DELAY_CAPS = [0.014]
 CONSISTENCY_WINDOWS = [1, 3, 5, 7]
-LOUDNESS_TIME_DELAY_CAPS = [0.0, 0.030]
-
+LOUDNESS_TIME_DELAY_CAPS = [0.00]
+arena_scaling_type = ["perimeter", "density", "fixed"]
 CONTROLLER_TYPES = [
     "treatment",
     "positive_control",
@@ -68,6 +68,7 @@ array_of_param_values = [
     CONSISTENCY_WINDOWS,
     LOUDNESS_TIME_DELAY_CAPS,
     CONTROLLER_TYPES,
+    arena_scaling_type,
 ]
 
 array_of_param_labels = [
@@ -77,6 +78,7 @@ array_of_param_labels = [
     "MEMORY_WINDOW_FOR_CONSISTENCY",
     "LOUDNESS_TIME_DELAY_CAP",
     "control_type",
+    "arena_size_scaling",
 ]
 
 
@@ -99,6 +101,24 @@ for item in list_of_combinations:
     simulation_parameters["NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT"] = int(
         np.ceil(simulation_parameters["MEMORY_WINDOW_FOR_CONSISTENCY"] / 2)
     )
+
+    if simulation_parameters["arena_size_scaling"] == "fixed":
+        simulation_parameters["ARENA_WIDTH"] = 9
+        simulation_parameters["ARENA_LENGTH"] = 5
+    elif simulation_parameters["arena_size_scaling"] == "perimeter":
+        simulation_parameters["ARENA_WIDTH"] = (
+            9 * (simulation_parameters["NUM_BATS"] / 30) + 4
+        )
+        simulation_parameters["ARENA_LENGTH"] = (
+            5 * (simulation_parameters["NUM_BATS"] / 30) + 4
+        )
+    elif simulation_parameters["arena_size_scaling"] == "density":
+        simulation_parameters["ARENA_WIDTH"] = (
+            9 * np.sqrt(simulation_parameters["NUM_BATS"] / 30) + 4
+        )
+        simulation_parameters["ARENA_LENGTH"] = (
+            5 * np.sqrt(simulation_parameters["NUM_BATS"] / 30) + 4
+        )
 
     simulation_parameters["PARAM_LABEL"] = f"paramset_{output_dir_counter}"
     simulation_parameters["PARAM_UUID"] = str(uuid.uuid4())

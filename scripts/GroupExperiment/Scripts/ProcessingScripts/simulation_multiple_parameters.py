@@ -55,7 +55,7 @@ def run_one_instance_of_simulation(dir_of_one_param_file, data_storage_dir):
         store_history=True,
         store_data_for_plotting=True,
         use_hydra=False,
-        termination_criteria="time",
+        termination_criteria="distance",
     )
 
     sim.run()

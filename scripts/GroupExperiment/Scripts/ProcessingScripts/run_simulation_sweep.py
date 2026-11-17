@@ -68,11 +68,11 @@ def run_simulation(cfg: DictConfig) -> None:
         cfg.arena.ARENA_WIDTH = 9
         cfg.arena.ARENA_LENGTH = 5
     elif cfg.arena.arena_size_scaling == "perimeter":
-        cfg.arena.ARENA_WIDTH = 9 * (cfg.arena.NUM_BATS / 30) + 2
-        cfg.arena.ARENA_LENGTH = 5 * (cfg.arena.NUM_BATS / 30) + 2
+        cfg.arena.ARENA_WIDTH = 9 * (cfg.arena.NUM_BATS / 30) + 4
+        cfg.arena.ARENA_LENGTH = 5 * (cfg.arena.NUM_BATS / 30) + 4
     elif cfg.arena.arena_size_scaling == "area":
-        cfg.arena.ARENA_WIDTH = 9 * np.sqrt(cfg.arena.NUM_BATS / 30) + 2
-        cfg.arena.ARENA_LENGTH = 5 * np.sqrt(cfg.arena.NUM_BATS / 30) + 2
+        cfg.arena.ARENA_WIDTH = 9 * np.sqrt(cfg.arena.NUM_BATS / 30) + 4
+        cfg.arena.ARENA_LENGTH = 5 * np.sqrt(cfg.arena.NUM_BATS / 30) + 4
     else:
         raise ValueError("wrong arena size")
 
