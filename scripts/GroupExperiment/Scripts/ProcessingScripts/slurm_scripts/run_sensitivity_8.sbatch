@@ -25,5 +25,5 @@ source ~/.bashrc
 conda activate /u/amoger/conda-envs/dynamic_model
 
 # Use srun inside allocations (good Slurm hygiene)
-srun python3 ./scripts/GroupExperiment/Scripts/ProcessingScripts/multiple_param_run_files/run_file_7.py $SLURM_CPUS_PER_TASK
+srun python3 ./scripts/GroupExperiment/Scripts/ProcessingScripts/multiple_param_run_files/run_file_8.py $SLURM_CPUS_PER_TASK
 

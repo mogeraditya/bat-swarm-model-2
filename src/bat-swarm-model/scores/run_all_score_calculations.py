@@ -225,7 +225,7 @@ def given_history_list_generate_score_files_for_sensitivity(
     range_of_distance_for_local_score,
 ):
     print(f"computing scores for {job_id} {run_id}")
-    distance_covered = history_lists[-1]["bat_distance_covered"][0]
+    distance_covered = np.min(history_lists[-1]["bat_distance_covered"])
     bat_positions_list, bat_directions_list = filter_bat_positions_from_history(
         history_lists
     )

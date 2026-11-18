@@ -18,9 +18,7 @@ sys.path.extend(
 from data_storage.combine_files_post_storage import (  # merge_csvs,
     stitch_together_pickle_history_lists_and_store,
 )
-from scores.run_all_score_calculations import (
-    given_history_list_generate_score_files_for_sensitivity,
-)
+from scores.run_score_calcs import given_history_list_generate_score_files
 from simulation.class_simulation import Simulation
 from supporting_files.utilities import load_parameters, make_dir
 from supporting_files.vectors import Vector
@@ -66,7 +64,7 @@ def run_one_instance_of_simulation(dir_of_one_param_file, data_storage_dir):
         f"job_number_{job_num}",
     )
 
-    given_history_list_generate_score_files_for_sensitivity(
+    given_history_list_generate_score_files(
         history_list,
         job_dir,
         job_uuid,
@@ -145,7 +143,7 @@ if __name__ == "__main__":
     PARAM_DIR = "./scripts/GroupExperiment/Data/InputData/group_multirun/"
 
     N_RUNS = 1  # Number of iterations per parameter set
-    DATA_STORAGE_DIR = r"./group_multirun_analysis_test_2/"  # Base output directory
+    DATA_STORAGE_DIR = r"./group_multirun_analysis_test_1/"  # Base output directory
     # MAX_WORKERS = 4  # Limit number of parallel processes
 
     # Run parallel processing
