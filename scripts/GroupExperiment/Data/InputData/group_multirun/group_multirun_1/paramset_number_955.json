@@ -17,8 +17,8 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 422672,
-    "arena_size_scaling": "perimeter",
+    "seed": 882110,
+    "arena_size_scaling": "density",
     "poisson_disk_radius": 1,
     "control_type": "negative_control",
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_955/",
@@ -44,11 +44,11 @@
     "INCLUDE_DIRECT_SOUNDS_IN_RESPONSE": "yes",
     "SPATIAL_REFERENCE_FRAME": "allocentric",
     "TEMPORAL_MASKING_FN_TYPE": "full",
-    "BAT_FRONTAL_RANGE": 60,
+    "BAT_FRONTAL_RANGE": 30,
     "CONSISTENCY_TIME_DELAY_CAP": 0.014,
-    "MEMORY_WINDOW_FOR_CONSISTENCY": 3,
+    "MEMORY_WINDOW_FOR_CONSISTENCY": 1,
     "CONVERT_GRIDS_TO_ONE_HOT": "yes",
-    "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 2,
+    "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 1,
     "LOUDNESS_TIME_DELAY_CAP": 0.0,
     "SUSTAIN_SOUNDS": 5,
     "SPL_THRESHOLD_FOR_ATTRACTION": 70,
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_955",
-    "PARAM_UUID": "b9425c89-ee78-4051-81c7-09b6ba75e1eb"
+    "PARAM_UUID": "0a44d411-7f83-43f8-8556-aa90db2f6ae5"
 }

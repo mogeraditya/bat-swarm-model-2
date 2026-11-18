@@ -2,7 +2,7 @@
     "SIM_DURATION": 60,
     "TIME_STEP": 0.001,
     "DISTANCE_CAP": 120,
-    "NUM_BATS": 10,
+    "NUM_BATS": 5,
     "JAMMER_RESOLUTION": 1000,
     "OBSTACLE_COUNT": 0,
     "OBSTACLE_RADIUS": 0.075,
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_3809",
-    "PARAM_UUID": "4c62af4a-6c18-4bc5-bb41-18d7e43591d2"
+    "PARAM_UUID": "5309d7f6-2c65-4832-8fba-bc44cbdc2dce"
 }

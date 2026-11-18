@@ -60,6 +60,7 @@ CONTROLLER_TYPES = [
     "negative_control",
     "null_control",
 ]
+BAT_FRONTAL_RANGES = [30, 60]
 
 
 array_of_param_values = [
@@ -70,6 +71,7 @@ array_of_param_values = [
     LOUDNESS_TIME_DELAY_CAPS,
     CONTROLLER_TYPES,
     arena_scaling_type,
+    BAT_FRONTAL_RANGES,
 ]
 
 array_of_param_labels = [
@@ -80,6 +82,7 @@ array_of_param_labels = [
     "LOUDNESS_TIME_DELAY_CAP",
     "control_type",
     "arena_size_scaling",
+    "BAT_FRONTAL_RANGE",
 ]
 
 

@@ -20,7 +20,7 @@
     "seed": 422672,
     "arena_size_scaling": "density",
     "poisson_disk_radius": 1,
-    "control_type": "treatment",
+    "control_type": "null_control",
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_1222/",
     "BAT_RADIUS": 0.125,
     "BAT_SLOW_SPEED": 1,
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_1222",
-    "PARAM_UUID": "777360c9-323f-429b-b994-5a8602b2edd5"
+    "PARAM_UUID": "fbf185bb-efe2-4329-a57a-383655bee741"
 }
