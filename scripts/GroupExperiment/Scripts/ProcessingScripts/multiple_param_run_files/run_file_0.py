@@ -13,7 +13,7 @@ from simulation_multiple_parameters import parallel_process_with_pool
 from supporting_files.vectors import Vector
 
 PARAM_DIR = "./scripts/GroupExperiment/Data/InputData/group_multirun/group_multirun_0/"
-DATA_STORAGE_DIR = r"./group_multirun_analysis_0/"  # Base output directory
+DATA_STORAGE_DIR = r"./group_multirun_length_based_0/"  # Base output directory
 # MAX_WORKERS = 4  # Limit number of parallel processes
 
 # Run parallel processing

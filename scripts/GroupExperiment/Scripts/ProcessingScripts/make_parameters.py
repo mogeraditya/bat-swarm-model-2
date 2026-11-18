@@ -18,6 +18,7 @@ from supporting_files.utilities import load_parameters, make_dir
 simulation_parameters = load_parameters(
     r"./scripts/GroupExperiment/Data/InputData/common_parameters.json"
 )
+import random
 
 dir_to_store = r"./scripts/GroupExperiment/Data/InputData/group_multirun/"
 make_dir(dir_to_store)
@@ -83,6 +84,7 @@ array_of_param_labels = [
 
 
 list_of_combinations = list(product(*array_of_param_values))
+random.shuffle(list_of_combinations)
 
 print(f"Number of parameter combinations: {len(list_of_combinations)}")
 
@@ -124,7 +126,7 @@ for item in list_of_combinations:
     simulation_parameters["PARAM_UUID"] = str(uuid.uuid4())
 
     # Distribute the generated files across eight directories.
-    mod_bin = output_dir_counter % 8
+    mod_bin = output_dir_counter % 9
     output_subdir = dir_to_store + f"/group_multirun_{mod_bin}"
     make_dir(output_subdir)
 

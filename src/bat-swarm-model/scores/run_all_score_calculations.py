@@ -230,9 +230,9 @@ def given_history_list_generate_score_files_for_sensitivity(
         history_lists
     )
     parameters_df = load_parameters(data_dir + "/parameters_used.json")
-    if len(bat_positions_list) > 10000:
-        bat_positions_list = bat_positions_list[10000:]
-        bat_directions_list = bat_directions_list[10000:]
+    # if len(bat_positions_list) > 10000:
+    #     bat_positions_list = bat_positions_list[10000:]
+    #     bat_directions_list = bat_directions_list[10000:]
 
     duration = len(bat_positions_list)
     (

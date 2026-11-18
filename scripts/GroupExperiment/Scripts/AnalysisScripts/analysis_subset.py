@@ -12,12 +12,12 @@ def _():
     import seaborn as sns
     import matplotlib.pyplot as plt
 
-    return np, pd, plt, sns
+    return mo, np, pd, plt, sns
 
 
 @app.cell
 def _(pd):
-    scores_dataframe = pd.read_csv("./scripts/GroupExperiment/Data/AnalysisData/summary_merged_17_11.csv")
+    scores_dataframe = pd.read_csv("./scripts/GroupExperiment/Data/AnalysisData/summary_merged_18_11.csv")
     scores_dataframe["seed"] = scores_dataframe["seed"].astype("category")
     # scores_dataframe = scores_dataframe[scores_dataframe["MEMORY_WINDOW_FOR_CONSISTENCY"] == 5]
     return (scores_dataframe,)
@@ -28,10 +28,11 @@ def _(np):
     varying_params = np.array([
         "NUM_BATS",
         "seed",
-        "CONSISTENCY_TIME_DELAY_CAP",
+        # "CONSISTENCY_TIME_DELAY_CAP",
         "MEMORY_WINDOW_FOR_CONSISTENCY",
-        "LOUDNESS_TIME_DELAY_CAP",
+        # "LOUDNESS_TIME_DELAY_CAP",
         "control_type",
+        "arena_size_scaling",
         ])
     return
 
@@ -92,7 +93,7 @@ def _(plt, scores_dataframe, sns):
 def _(plt, scores_dataframe, sns):
     plt.figure(figsize=(12,6))
     plt.subplot(1,2,1)
-    sns.lineplot(data=scores_dataframe[scores_dataframe["NUM_BATS"]==100], x="control_type", y="distance travelled", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
+    sns.lineplot(data=scores_dataframe, x="control_type", y="distance travelled", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
     plt.subplot(1,2,2)
     sns.lineplot(data=scores_dataframe, x="control_type", y="interbat collision total", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
     return
@@ -122,20 +123,62 @@ def _(plt, scores_dataframe, sns):
 
 
 @app.cell
-def _(plt, scores_dataframe):
-    plt.hist(scores_dataframe["control_type"])
+def _(scores_dataframe, sns):
+    sns.countplot(data=scores_dataframe,x="NUM_BATS", hue="arena_size_scaling")
     return
 
 
 @app.cell
 def _(normalized_df, sns):
-    sns.boxplot(data=normalized_df, x="NUM_BATS", y="wall collision per bat", hue="control_type")
+    sns.lineplot(data=normalized_df[normalized_df["arena_size_scaling"]=="perimeter"], x="NUM_BATS", y="wall collision total", hue="control_type")
     return
 
 
 @app.cell
 def _(normalized_df, sns):
-    sns.boxplot(data=normalized_df, x="control_type", y="wall collision per bat", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
+    sns.lineplot(data=normalized_df[normalized_df["arena_size_scaling"]=="perimeter"], x="NUM_BATS", y="interbat collision total", hue="control_type")
+    return
+
+
+@app.cell
+def _(normalized_df, sns):
+    sns.violinplot(data=normalized_df, x="control_type", y="wall collision per bat", hue="arena_size_scaling")
+    return
+
+
+@app.cell
+def _(mo):
+    arena_scaling = ["density", "perimeter", "fixed"]
+    slider_param = mo.ui.slider(start=0, stop=len(arena_scaling)-1, step=1, label="arean scaling")
+    slider_consistency = mo.ui.slider(start=1, stop=7, step=2, label="memory window for consistency", value=3)
+    mo.vstack([slider_param, slider_consistency])
+    return arena_scaling, slider_consistency, slider_param
+
+
+@app.cell
+def _(arena_scaling, scores_dataframe, slider_consistency, slider_param):
+    df_slider = scores_dataframe[(scores_dataframe["arena_size_scaling"]==arena_scaling[slider_param.value])&(scores_dataframe["MEMORY_WINDOW_FOR_CONSISTENCY"]==slider_consistency.value)]
+    # df_slider
+    return (df_slider,)
+
+
+@app.cell
+def _(df_slider, plt, sns):
+    plt.figure(figsize=(12,6))
+    plt.subplot(1,2,1)
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="wall collision total", hue="control_type")
+    plt.subplot(1,2,2)
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="interbat collision total", hue="control_type")
+    return
+
+
+@app.cell
+def _(df_slider, plt, sns):
+    plt.figure(figsize=(12,6))
+    plt.subplot(1,2,1)
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="duration", hue="control_type")
+    plt.subplot(1,2,2)
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="distance travelled", hue="control_type")
     return
 
 
