@@ -32,7 +32,7 @@ from data_storage.combine_files_post_storage import (
 # from plotting.polarization_milling_module import PolarizationMillingModule
 # from plotting.sensory_volume_module import SensoryVolumeModule
 from plotting.visualizer import visualize
-from scores.run_all_score_calculations import given_history_list_generate_score_files
+from scores.run_score_calcs import given_history_list_generate_score_files
 from simulation.class_simulation import Simulation
 
 

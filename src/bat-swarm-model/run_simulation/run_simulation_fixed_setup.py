@@ -32,9 +32,8 @@ from data_storage.combine_files_post_storage import (
 # from plotting.polarization_milling_module import PolarizationMillingModule
 # from plotting.sensory_volume_module import SensoryVolumeModule
 from plotting.visualizer import visualize
-from scores.run_all_score_calculations import (
+from scores.run_score_calcs import (  # given_history_list_generate_score_files_for_sensitivity,
     given_history_list_generate_score_files,
-    given_history_list_generate_score_files_for_sensitivity,
 )
 from simulation.class_simulation import Simulation
 
@@ -92,12 +91,14 @@ def run_simulation(cfg: DictConfig) -> None:
         focal_bat=0,
         modules=[
             "arena",
-            "polarization_milling",
+            # "polarization_milling",
             "info_text",
-            "ipi_radial",
-            "sum_radial",
-            "intensity",
+            # "ipi_radial",
+            # "sum_radial",
+            # "intensity",
         ],
+        rows=1,
+        columns=2,
     )
 
 

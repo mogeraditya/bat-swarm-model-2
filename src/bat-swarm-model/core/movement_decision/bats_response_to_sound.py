@@ -4,7 +4,7 @@ from movement_decision.supporting_functions_for_consistency_2 import (  # given_
     given_matrix_find_cell_to_respond_to_presence,
     given_time_and_angle_return_direction,
 )
-from movement_decision.supporting_functions_for_loudest_sound import (
+from movement_decision.supporting_functions_for_loudest_sound_2 import (
     convert_detected_sounds_into_grids_loudest_sound,
     given_matrix_find_cell_to_respond_to_loudest_sound,
     given_time_and_angle_return_direction_loudest_sound,
@@ -128,7 +128,11 @@ def decide_next_direction_based_on_loudness(self, detected_sound_objects):
         )
     )
 
-    cell_index_to_respond_to = given_matrix_find_cell_to_respond_to_loudest_sound(
+    (
+        cell_index_to_respond_to,
+        selected_intensity,
+        selected_response_type,
+    ) = given_matrix_find_cell_to_respond_to_loudest_sound(
         self.ipi_matrix_for_sensory_volume,
         self.parameters_df,
         self.direction,
@@ -151,11 +155,12 @@ def decide_next_direction_based_on_loudness(self, detected_sound_objects):
         angle_of_activated_cell = grid_column_labels[cell_index_to_respond_to[1]]
         next_direction, response_type = (
             given_time_and_angle_return_direction_loudest_sound(
-                intensity_of_sound,
+                selected_intensity,
                 angle_of_activated_cell,
                 self.parameters_df,
                 self.direction,
                 self.allocentric_axis_y,
+                response_type=selected_response_type,
             )
         )
         self.any_loud_sound = "yes"

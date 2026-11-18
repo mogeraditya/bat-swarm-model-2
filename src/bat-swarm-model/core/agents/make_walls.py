@@ -13,7 +13,7 @@ class WallPanel(Obstacle):
         return f"WallPanel(id={self.id}, position={self.position})"
 
 
-def make_walls(parameters_df):
+def make_walls(parameters_df, which_walls_to_put=[0, 1, 2, 3]):
     width_array = np.arange(
         parameters_df["WALL_RESOLUTION"],
         parameters_df["ARENA_WIDTH"],
@@ -29,13 +29,24 @@ def make_walls(parameters_df):
     right_wall = [(parameters_df["ARENA_WIDTH"], i) for i in length_array]
     top_wall = [(i, parameters_df["ARENA_LENGTH"]) for i in width_array]
     bottom_wall = [(i, 0) for i in width_array]
-    positions_to_put_objects = [*left_wall, *right_wall, *top_wall, *bottom_wall]
-    wall_ids = [
-        *["left_wall"] * len(left_wall),
-        *["right_wall"] * len(right_wall),
-        *["top_wall"] * len(top_wall),
-        *["bottom_wall"] * len(bottom_wall),
-    ]
+    # positions_to_put_objects = [*left_wall, *right_wall, *top_wall, *bottom_wall]
+    # wall_ids = [
+    #     *["left_wall"] * len(left_wall),
+    #     *["right_wall"] * len(right_wall),
+    #     *["top_wall"] * len(top_wall),
+    #     *["bottom_wall"] * len(bottom_wall),
+    # ]
+
+    wall_panel_pos_lists = [left_wall, right_wall, top_wall, bottom_wall]
+    wall_panel_ids_lists = ["left_wall", "right_wall", "top_wall", "bottom_wall"]
+    positions_to_put_objects = []
+    wall_ids = []
+    for id_x in range(4):
+        if id_x in which_walls_to_put:
+            positions_to_put_objects.extend(wall_panel_pos_lists[id_x])
+            wall_ids.extend(
+                [wall_panel_ids_lists[id_x]] * len(wall_panel_pos_lists[id_x])
+            )
 
     store_wall_objects = [
         WallPanel(parameters_df, position, wall_ids[i])

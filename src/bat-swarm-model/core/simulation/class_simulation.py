@@ -109,6 +109,10 @@ class Simulation:
             self.wall_objects = make_walls(self.parameters_df)
         elif self.parameters_df["ARENA_TYPE"] == "open":
             self.wall_objects = []
+        elif self.parameters_df["ARENA_TYPE"] == "tunnel":
+            self.wall_objects = make_walls(
+                self.parameters_df, which_walls_to_put=[2, 3]
+            )
         else:
             raise ValueError("Unrecognised arena type")
 
@@ -192,57 +196,55 @@ class Simulation:
 
         for time_step in tqdm(time_array[1:]):
             # print(time_step)
-            try:
-                self.time_elapsed = time_step
+            # try:
+            self.time_elapsed = time_step
 
-                for sound in self.sound_objects:
-                    sound.update(self.time_elapsed)
+            for sound in self.sound_objects:
+                sound.update(self.time_elapsed)
 
-                for bat in self.bats:
-                    bat.update(
-                        self.time_elapsed, self.sound_objects, temporal_masking_file
-                    )
+            for bat in self.bats:
+                bat.update(self.time_elapsed, self.sound_objects, temporal_masking_file)
 
-                for jammer in self.jammers:
-                    jammer.update(self.time_elapsed, self.sound_objects)
+            for jammer in self.jammers:
+                jammer.update(self.time_elapsed, self.sound_objects)
 
-                self.handle_reflections(self.time_elapsed)
+            self.handle_reflections(self.time_elapsed)
 
-                hearing_threshold = self.parameters_df["HEARING_THRESHOLD"]
-                self.sound_objects = [
-                    s
-                    for s in self.sound_objects
-                    if s.active and s.current_spl > hearing_threshold
-                ]
+            hearing_threshold = self.parameters_df["HEARING_THRESHOLD"]
+            self.sound_objects = [
+                s
+                for s in self.sound_objects
+                if s.active and s.current_spl > hearing_threshold
+            ]
 
-                self.history.append(self.convert_necessary_information_into_dict())
-                # print(self.convert_necessary_information_into_dict())
-                current_loop_time = datetime.now()
-                # list_time_taken_for_each_loop.append(
-                #     current_loop_time - save_time_of_last_iter
-                # )
+            self.history.append(self.convert_necessary_information_into_dict())
+            # print(self.convert_necessary_information_into_dict())
+            current_loop_time = datetime.now()
+            # list_time_taken_for_each_loop.append(
+            #     current_loop_time - save_time_of_last_iter
+            # )
 
-                # save_time_of_last_iter = current_loop_time
+            # save_time_of_last_iter = current_loop_time
 
-                if self.store_history:
-                    clear_history = handle_data_storage(
-                        self.time_elapsed,
-                        False,
-                        self.history,
-                        self.parameters_df,
-                        self.dir_to_store,
-                        self.store_data_for_plotting,
-                    )
-                    self.history = (
-                        [] if clear_history else self.history
-                    )  # clear history after storing to save memory.
-
-            except BaseException:
-                print("Unexpected error:", sys.exc_info()[0])
-                print(
-                    f"error in file {self.parameters_df["OUTPUT_DIR_FOR_SIMULATION"]}"
+            if self.store_history:
+                clear_history = handle_data_storage(
+                    self.time_elapsed,
+                    False,
+                    self.history,
+                    self.parameters_df,
+                    self.dir_to_store,
+                    self.store_data_for_plotting,
                 )
-                break
+                self.history = (
+                    [] if clear_history else self.history
+                )  # clear history after storing to save memory.
+
+            # except BaseException:
+            #     print("Unexpected error:", sys.exc_info()[0])
+            #     print(
+            #         f"error in file {self.parameters_df["OUTPUT_DIR_FOR_SIMULATION"]}"
+            #     )
+            #     break
         return current_loop_time
 
     def run_simulation_for_given_agent_distance(self, temporal_masking_file):
@@ -254,57 +256,55 @@ class Simulation:
             min_distance_covered_in_last_loop = min_distance_covered
             time_step += self.parameters_df["TIME_STEP"]
 
-            try:
-                self.time_elapsed = time_step
+            # try:
+            self.time_elapsed = time_step
 
-                for sound in self.sound_objects:
-                    sound.update(self.time_elapsed)
+            for sound in self.sound_objects:
+                sound.update(self.time_elapsed)
 
-                for bat in self.bats:
-                    bat.update(
-                        self.time_elapsed, self.sound_objects, temporal_masking_file
-                    )
+            for bat in self.bats:
+                bat.update(self.time_elapsed, self.sound_objects, temporal_masking_file)
 
-                for jammer in self.jammers:
-                    jammer.update(self.time_elapsed, self.sound_objects)
+            for jammer in self.jammers:
+                jammer.update(self.time_elapsed, self.sound_objects)
 
-                self.handle_reflections(self.time_elapsed)
+            self.handle_reflections(self.time_elapsed)
 
-                hearing_threshold = self.parameters_df["HEARING_THRESHOLD"]
-                self.sound_objects = [
-                    s
-                    for s in self.sound_objects
-                    if s.active and s.current_spl > hearing_threshold
-                ]
+            hearing_threshold = self.parameters_df["HEARING_THRESHOLD"]
+            self.sound_objects = [
+                s
+                for s in self.sound_objects
+                if s.active and s.current_spl > hearing_threshold
+            ]
 
-                self.history.append(self.convert_necessary_information_into_dict())
-                # print(self.convert_necessary_information_into_dict())
-                current_loop_time = datetime.now()
-                # list_time_taken_for_each_loop.append(
-                #     current_loop_time - save_time_of_last_iter
-                # )
+            self.history.append(self.convert_necessary_information_into_dict())
+            # print(self.convert_necessary_information_into_dict())
+            current_loop_time = datetime.now()
+            # list_time_taken_for_each_loop.append(
+            #     current_loop_time - save_time_of_last_iter
+            # )
 
-                # save_time_of_last_iter = current_loop_time
+            # save_time_of_last_iter = current_loop_time
 
-                if self.store_history:
-                    clear_history = handle_data_storage(
-                        self.time_elapsed,
-                        False,
-                        self.history,
-                        self.parameters_df,
-                        self.dir_to_store,
-                        self.store_data_for_plotting,
-                    )
-                    self.history = (
-                        [] if clear_history else self.history
-                    )  # clear history after storing to save memory.
-
-            except BaseException:
-                print("Unexpected error:", sys.exc_info()[0])
-                print(
-                    f"error in file {self.parameters_df["OUTPUT_DIR_FOR_SIMULATION"]}"
+            if self.store_history:
+                clear_history = handle_data_storage(
+                    self.time_elapsed,
+                    False,
+                    self.history,
+                    self.parameters_df,
+                    self.dir_to_store,
+                    self.store_data_for_plotting,
                 )
-                break
+                self.history = (
+                    [] if clear_history else self.history
+                )  # clear history after storing to save memory.
+
+            # except BaseException:
+            #     print("Unexpected error:", sys.exc_info()[0])
+            #     print(
+            #         f"error in file {self.parameters_df["OUTPUT_DIR_FOR_SIMULATION"]}"
+            #     )
+            #     break
 
             distance_covered_by_agents = [bat.log_distance_moved for bat in self.bats]
             min_distance_covered = np.min(distance_covered_by_agents)
@@ -330,7 +330,7 @@ class Simulation:
         bat_positions = [(f(bat.position.x), f(bat.position.y)) for bat in self.bats]
         # local polarization/density for every bat, computed once per frame
         local_polarization_list, local_density_list = (
-            compute_local_polarization_per_bat(bat_directions, bat_positions, 2)
+            compute_local_polarization_per_bat(bat_directions, bat_positions, 3)
         )
         local_polarization_mean, local_density_mean = aggregate_local_polarization(
             local_polarization_list, local_density_list, "mean"
@@ -378,16 +378,16 @@ class Simulation:
             "bat_intensity_matrix_for_consistency": [
                 bat.sum_grids_in_memory_intensity for bat in self.bats
             ],
-            # "polarization_score": compute_polarization(bat_directions),
-            # "local_polarization_score": local_polarization_mean,
-            # "local_polarization_score_list": [
-            #     local_polarization_list[bat.id] for bat in self.bats
-            # ],
-            # "local_density_score": local_density_mean,
-            # "local_density_score_list": [
-            #     local_density_list[bat.id] for bat in self.bats
-            # ],
-            # "milling_score": compute_milling(bat_directions, bat_positions),
+            "polarization_score": compute_polarization(bat_directions),
+            "local_polarization_score": local_polarization_mean,
+            "local_polarization_score_list": [
+                local_polarization_list[bat.id] for bat in self.bats
+            ],
+            "local_density_score": local_density_mean,
+            "local_density_score_list": [
+                local_density_list[bat.id] for bat in self.bats
+            ],
+            "milling_score": compute_milling(bat_directions, bat_positions),
         }
 
         return dictionary_w_information

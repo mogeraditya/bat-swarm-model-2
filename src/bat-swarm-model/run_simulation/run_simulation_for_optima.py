@@ -30,7 +30,7 @@ from plotting.visualizer import visualize
 from scores.collision_scores import compute_collision_counts_and_length
 from scores.local_polarization_score import compute_local_polarization
 from scores.milling_score import compute_milling
-from scores.run_all_score_calculations import (
+from scores.run_score_calcs import (
     filter_bat_positions_from_history,
     given_history_list_generate_score_files,
     given_history_list_generate_score_files_for_sensitivity,

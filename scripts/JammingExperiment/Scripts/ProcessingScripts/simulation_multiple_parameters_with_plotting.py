@@ -21,7 +21,7 @@ from data_storage.combine_files_post_storage import (  # merge_csvs,
     stitch_together_pickle_history_lists_and_store,
 )
 from plotting.visualizer import visualize
-from scores.run_all_score_calculations import (
+from scores.run_score_calcs import (
     given_history_list_generate_score_files_for_sensitivity,
 )
 from simulation.class_simulation import Simulation

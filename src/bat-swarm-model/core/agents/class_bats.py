@@ -131,6 +131,7 @@ class Bat:
         self._hearing_directionality = p["HEARING_DIRECTIONALITY"]
         self._is_bounded = p["ARENA_TYPE"] == "bounded"
         self._is_open = p["ARENA_TYPE"] == "open"
+        self._is_tunnel = p["ARENA_TYPE"] == "tunnel"
         self._is_egocentric = p["SPATIAL_REFERENCE_FRAME"] == "egocentric"
         self._arena_width = p["ARENA_WIDTH"]
         self._arena_length = p["ARENA_LENGTH"]
@@ -220,6 +221,19 @@ class Bat:
             self.position.x = self.position.x % self._arena_width
             self.position.y = self.position.y % self._arena_length
 
+        if self._is_tunnel:
+
+            if (
+                self.position.y <= self.radius
+                or self.position.y >= self._arena_length - self.radius
+            ):
+
+                self.position = Vector(self.position.x, self.position.y)
+                self.direction.y *= -1
+                self.reset_bat()
+
+            self.position.x = self.position.x % self._arena_width
+
     def emit_sounds(self, current_time, sound_objects):
         """Trigger sound emission by Bat.
         Whenever the function is called, it checks if sufficient time
@@ -237,7 +251,8 @@ class Bat:
         if self.time_since_last_call >= call_interval:
             # if self.id == 0:
             #     print(self.next_direction, self.direction)
-            self.next_direction = self.direction
+            if str2bool(self.any_consistent_sound):
+                self.next_direction = self.direction
             # sound object to be emitted
             sound = DirectSound(
                 parameters_df=self.parameters_df,
@@ -640,7 +655,13 @@ class Bat:
         # ):
         if np.abs(angle_between_current_and_new) > 1e-10:
 
-            self.is_bat_rotating = True
+            if str2bool(self.any_consistent_sound):
+                self.is_bat_rotating = True
+            elif np.abs(angle_between_current_and_new) <= np.radians(
+                self.parameters_df["ANGLE_RANGE_FOR_ATTRACTION"]
+            ) and not str2bool(self.any_consistent_sound):
+                self.is_bat_rotating = False
+                # self.speed = np.random.normal(loc=5, scale=1)
 
             # self.speed = self.parameters_df["BAT_SLOW_SPEED"]
             self.rotation_speed = self.parameters_df["BAT_ROTATION_SPEED"]
@@ -656,16 +677,34 @@ class Bat:
 
             rotated_vector = current_direction.rotate(rotation_angle)
             self.direction = rotated_vector.normalize()
-
         elif np.abs(angle_between_current_and_new) < 1e-10:
             self.is_bat_rotating = False
-            self.speed = self.parameters_df["BAT_FAST_SPEED"]
-            self.rotation_speed = 0
+            self.speed = np.random.normal(
+                loc=self.parameters_df["BAT_FAST_SPEED"], scale=1
+            )
         else:
             self.is_bat_rotating = False
+            # self.speed = np.random.normal(
+            #     loc=self.parameters_df["BAT_FAST_SPEED"], scale=1
+            # )
 
+            self.speed = self.parameters_df["BAT_FAST_SPEED"]
+            self.rotation_speed = 0
+
+            # self.speed = self.parameters_df["BAT_FAST_SPEED"]
+            # self.rotation_speed = 0
+
+        # if self.is_bat_rotating:
+        #     self.speed = np.random.normal(
+        #         self.parameters_df["BAT_SLOW_SPEED"], scale=0.5
+        #     )
+        # else:
+        #     self.speed = np.random.normal(
+        #         loc=self.parameters_df["BAT_FAST_SPEED"], scale=1
+        #     )
         if self.is_bat_rotating:
             self.speed = self.parameters_df["BAT_SLOW_SPEED"]
+
         else:
             self.speed = self.parameters_df["BAT_FAST_SPEED"]
 

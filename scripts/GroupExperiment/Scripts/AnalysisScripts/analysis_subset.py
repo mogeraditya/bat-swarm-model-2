@@ -166,9 +166,9 @@ def _(arena_scaling, scores_dataframe, slider_consistency, slider_param):
 def _(df_slider, plt, sns):
     plt.figure(figsize=(12,6))
     plt.subplot(1,2,1)
-    sns.lineplot(data=df_slider, x="NUM_BATS", y="wall collision total", hue="control_type")
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="wall collision total", hue="control_type", errorbar="pi")
     plt.subplot(1,2,2)
-    sns.lineplot(data=df_slider, x="NUM_BATS", y="interbat collision total", hue="control_type")
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="interbat collision total", hue="control_type", errorbar="pi")
     return
 
 
@@ -176,9 +176,9 @@ def _(df_slider, plt, sns):
 def _(df_slider, plt, sns):
     plt.figure(figsize=(12,6))
     plt.subplot(1,2,1)
-    sns.lineplot(data=df_slider, x="NUM_BATS", y="duration", hue="control_type")
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="duration", hue="control_type",  errorbar="pi")
     plt.subplot(1,2,2)
-    sns.lineplot(data=df_slider, x="NUM_BATS", y="distance travelled", hue="control_type")
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="space_occupied", hue="control_type", errorbar="pi")
     return
 
 
