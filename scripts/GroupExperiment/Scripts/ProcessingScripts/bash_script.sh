@@ -1,5 +1,5 @@
 #!/bin/bash
 
-for i in {0..7}; do
+for i in {0..8}; do
     sbatch "./scripts/GroupExperiment/Scripts/ProcessingScripts/slurm_scripts/run_sensitivity_${i}.sbatch"
 done

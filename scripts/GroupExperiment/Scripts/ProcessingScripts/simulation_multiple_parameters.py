@@ -143,7 +143,7 @@ if __name__ == "__main__":
     PARAM_DIR = "./scripts/GroupExperiment/Data/InputData/group_multirun/"
 
     N_RUNS = 1  # Number of iterations per parameter set
-    DATA_STORAGE_DIR = r"./group_multirun_analysis_test_1/"  # Base output directory
+    DATA_STORAGE_DIR = r"./group_multirun_analysis_test/"  # Base output directory
     # MAX_WORKERS = 4  # Limit number of parallel processes
 
     # Run parallel processing

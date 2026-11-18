@@ -20,7 +20,7 @@
     "seed": 522173,
     "arena_size_scaling": "fixed",
     "poisson_disk_radius": 1,
-    "control_type": "treatment",
+    "control_type": "negative_control",
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_2062/",
     "BAT_RADIUS": 0.125,
     "BAT_SLOW_SPEED": 1,
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_2062",
-    "PARAM_UUID": "c267795d-e03e-40a2-a7cc-679eaf9915b6"
+    "PARAM_UUID": "9839962b-cc93-4c98-842e-2410db67d79a"
 }

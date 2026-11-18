@@ -2,7 +2,7 @@
     "SIM_DURATION": 60,
     "TIME_STEP": 0.001,
     "DISTANCE_CAP": 120,
-    "NUM_BATS": 50,
+    "NUM_BATS": 30,
     "JAMMER_RESOLUTION": 1000,
     "OBSTACLE_COUNT": 0,
     "OBSTACLE_RADIUS": 0.075,
@@ -17,7 +17,7 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 915113,
+    "seed": 132467,
     "arena_size_scaling": "fixed",
     "poisson_disk_radius": 1,
     "control_type": "null_control",
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_3786",
-    "PARAM_UUID": "9e398fb1-994f-4430-bee0-8f0aa81eeb1b"
+    "PARAM_UUID": "1024bc75-c88a-4088-a242-979d6551b5d6"
 }

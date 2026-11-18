@@ -17,7 +17,7 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 710252,
+    "seed": 152134,
     "arena_size_scaling": "density",
     "poisson_disk_radius": 1,
     "control_type": "positive_control",
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_2972",
-    "PARAM_UUID": "c4be8477-4ab7-471c-8565-352bf72462c3"
+    "PARAM_UUID": "781f93d1-2d57-44d3-bbae-4435d89efef3"
 }

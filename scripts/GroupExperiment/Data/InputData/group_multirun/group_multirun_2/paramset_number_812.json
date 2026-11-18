@@ -2,12 +2,12 @@
     "SIM_DURATION": 60,
     "TIME_STEP": 0.001,
     "DISTANCE_CAP": 120,
-    "NUM_BATS": 10,
+    "NUM_BATS": 50,
     "JAMMER_RESOLUTION": 1000,
     "OBSTACLE_COUNT": 0,
     "OBSTACLE_RADIUS": 0.075,
-    "ARENA_WIDTH": 9,
-    "ARENA_LENGTH": 5,
+    "ARENA_WIDTH": 15.61895003862225,
+    "ARENA_LENGTH": 10.454972243679027,
     "WALL_RESOLUTION": 0.11,
     "ARENA_TYPE": "bounded",
     "REFLECTION_LOSS": 24,
@@ -17,8 +17,8 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 643227,
-    "arena_size_scaling": "fixed",
+    "seed": 132467,
+    "arena_size_scaling": "density",
     "poisson_disk_radius": 1,
     "control_type": "treatment",
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_812/",
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_812",
-    "PARAM_UUID": "4a2c42a2-a4b3-4234-983f-7c5cdacc16e9"
+    "PARAM_UUID": "9b84e82f-f6a6-4b02-9a1c-7488fbf8c469"
 }

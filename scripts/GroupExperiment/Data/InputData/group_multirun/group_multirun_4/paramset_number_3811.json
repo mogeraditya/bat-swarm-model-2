@@ -20,7 +20,7 @@
     "seed": 314025,
     "arena_size_scaling": "density",
     "poisson_disk_radius": 1,
-    "control_type": "treatment",
+    "control_type": "positive_control",
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_3811/",
     "BAT_RADIUS": 0.125,
     "BAT_SLOW_SPEED": 1,
@@ -46,9 +46,9 @@
     "TEMPORAL_MASKING_FN_TYPE": "full",
     "BAT_FRONTAL_RANGE": 60,
     "CONSISTENCY_TIME_DELAY_CAP": 0.014,
-    "MEMORY_WINDOW_FOR_CONSISTENCY": 1,
+    "MEMORY_WINDOW_FOR_CONSISTENCY": 3,
     "CONVERT_GRIDS_TO_ONE_HOT": "yes",
-    "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 1,
+    "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 2,
     "LOUDNESS_TIME_DELAY_CAP": 0.0,
     "SUSTAIN_SOUNDS": 5,
     "SPL_THRESHOLD_FOR_ATTRACTION": 70,
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_3811",
-    "PARAM_UUID": "da99e952-4601-44ad-b083-b36aa47c443c"
+    "PARAM_UUID": "115990c0-a2c9-417d-b3b4-5a167154107a"
 }

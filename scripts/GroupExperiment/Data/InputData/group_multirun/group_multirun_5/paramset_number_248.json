@@ -17,7 +17,7 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 973687,
+    "seed": 892498,
     "arena_size_scaling": "fixed",
     "poisson_disk_radius": 1,
     "control_type": "treatment",
@@ -46,9 +46,9 @@
     "TEMPORAL_MASKING_FN_TYPE": "full",
     "BAT_FRONTAL_RANGE": 60,
     "CONSISTENCY_TIME_DELAY_CAP": 0.014,
-    "MEMORY_WINDOW_FOR_CONSISTENCY": 1,
+    "MEMORY_WINDOW_FOR_CONSISTENCY": 5,
     "CONVERT_GRIDS_TO_ONE_HOT": "yes",
-    "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 1,
+    "NUMBER_OF_CONSISTENT_IPIS_FOR_MOVEMENT": 3,
     "LOUDNESS_TIME_DELAY_CAP": 0.0,
     "SUSTAIN_SOUNDS": 5,
     "SPL_THRESHOLD_FOR_ATTRACTION": 70,
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_248",
-    "PARAM_UUID": "a247b954-1e8b-4449-a6cb-ed002af9b505"
+    "PARAM_UUID": "3b78b316-6461-466e-8c6f-78fcdadb4559"
 }

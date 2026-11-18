@@ -17,10 +17,10 @@
     "CLEANUP_PLOT_DATA": 2000,
     "SOUND_SPEED": 343,
     "AIR_ABSORPTION": 1,
-    "seed": 719704,
-    "arena_size_scaling": "density",
+    "seed": 426499,
+    "arena_size_scaling": "perimeter",
     "poisson_disk_radius": 1,
-    "control_type": "null_control",
+    "control_type": "negative_control",
     "OUTPUT_DIR_FOR_SIMULATION": "/group_multirun_analysis/paramset_2416/",
     "BAT_RADIUS": 0.125,
     "BAT_SLOW_SPEED": 1,
@@ -60,5 +60,5 @@
     "num": 0,
     "name": "single_run",
     "PARAM_LABEL": "paramset_2416",
-    "PARAM_UUID": "14c1536f-cbdd-4eda-9b4e-d26f6120cf72"
+    "PARAM_UUID": "8826f3d6-4e32-44b2-9935-d8320c13b9a8"
 }
