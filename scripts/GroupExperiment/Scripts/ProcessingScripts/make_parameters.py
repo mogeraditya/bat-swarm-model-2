@@ -38,19 +38,19 @@ SEEDS = [
     882110,
     915113,
     643227,
-    901250,
-    405197,
-    719704,
-    461562,
-    314025,
-    973687,
-    422672,
-    132467,
-    294932,
-    386342,
+    # 901250,
+    # 405197,
+    # 719704,
+    # 461562,
+    # 314025,
+    # 973687,
+    # 422672,
+    # 132467,
+    # 294932,
+    # 386342,
 ]
 
-CONSISTENCY_TIME_DELAY_CAPS = [0.014]
+CONSISTENCY_TIME_DELAY_CAPS = [0.011, 0.014]
 CONSISTENCY_WINDOWS = [1, 3, 5, 7]
 LOUDNESS_TIME_DELAY_CAPS = [0.00]
 arena_scaling_type = ["perimeter", "density", "fixed"]
@@ -60,7 +60,7 @@ CONTROLLER_TYPES = [
     "negative_control",
     "null_control",
 ]
-BAT_FRONTAL_RANGES = [30, 60]
+BAT_FRONTAL_RANGES = [60]
 
 
 array_of_param_values = [
