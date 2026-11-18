@@ -10,7 +10,9 @@ if __name__ == "__main__":
     #           show_sounds=True, focal_bat=0)
 
     # Only want the arena + sensory volume + text counters this time:
-    OUTPUT_DIR = r"/home/adityamoger/Documents/group_experiment_raw_data/group_multirun_analysis_0/group_multirun_analysis/paramset_0/"
+    OUTPUT_DIR = (
+        r"/home/adityamoger/Documents/GitHub/claude-bs/outputs/2026-11-18/19-49-26/"
+    )
     visualize(
         output_dir=OUTPUT_DIR,
         save_animation=OUTPUT_DIR,
@@ -21,13 +23,13 @@ if __name__ == "__main__":
         modules=[
             "arena",
             # "polarization_milling",
-            "info_text",
-            "ipi_radial",
-            "sum_radial",
-            "intensity",
+            # "info_text",
+            # "ipi_radial",
+            # "sum_radial",
+            # "intensity",
             # "sensory_volume",
         ],
-        rows=2,
-        columns=3,
+        rows=1,
+        columns=1,
         # or equivalently: modules=["arena", "sensory_volume", "info_text"]
     )
