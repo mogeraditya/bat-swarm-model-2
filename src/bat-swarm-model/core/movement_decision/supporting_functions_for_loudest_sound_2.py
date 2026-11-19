@@ -48,9 +48,10 @@ def find_indices_corresponding_to_hearing_range(
 
     angles_to_hearing_range = np.arange(
         -hearing_range + angle_between_reference_axis_and_bat,
-        hearing_range
-        + angle_between_reference_axis_and_bat
-        + bat_angular_resolution / 2,
+        # + np.radians(90),  # TODO :FLAG
+        hearing_range + angle_between_reference_axis_and_bat,
+        # + np.radians(90)  # TODO : FLAG
+        +bat_angular_resolution / 2,
         bat_angular_resolution,
     )
 

@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.25.2"
-app = marimo.App()
+app = marimo.App(width="full")
 
 
 @app.cell
@@ -17,7 +17,7 @@ def _():
 
 @app.cell
 def _(pd):
-    scores_dataframe = pd.read_csv("./scripts/GroupExperiment/Data/AnalysisData/summary_merged_18_11.csv")
+    scores_dataframe = pd.read_csv("./scripts/GroupExperiment/Data/AnalysisData/summary_merged_19_11.csv")
     scores_dataframe["seed"] = scores_dataframe["seed"].astype("category")
     # scores_dataframe = scores_dataframe[scores_dataframe["MEMORY_WINDOW_FOR_CONSISTENCY"] == 5]
     return (scores_dataframe,)
@@ -28,11 +28,12 @@ def _(np):
     varying_params = np.array([
         "NUM_BATS",
         "seed",
-        # "CONSISTENCY_TIME_DELAY_CAP",
+        "CONSISTENCY_TIME_DELAY_CAP",
         "MEMORY_WINDOW_FOR_CONSISTENCY",
         # "LOUDNESS_TIME_DELAY_CAP",
         "control_type",
         "arena_size_scaling",
+        # "BAT_FRONTAL_RANGE",
         ])
     return
 
@@ -90,12 +91,12 @@ def _(plt, scores_dataframe, sns):
 
 
 @app.cell
-def _(plt, scores_dataframe, sns):
-    plt.figure(figsize=(12,6))
-    plt.subplot(1,2,1)
-    sns.lineplot(data=scores_dataframe, x="control_type", y="distance travelled", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
-    plt.subplot(1,2,2)
-    sns.lineplot(data=scores_dataframe, x="control_type", y="interbat collision total", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
+def _():
+    # plt.figure(figsize=(12,6))
+    # plt.subplot(1,2,1)
+    # sns.lineplot(data=scores_dataframe, x="control_type", y="distance travelled", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
+    # plt.subplot(1,2,2)
+    # sns.lineplot(data=scores_dataframe, x="control_type", y="interbat collision total", hue="MEMORY_WINDOW_FOR_CONSISTENCY")
     return
 
 
@@ -116,7 +117,7 @@ def _(plt, scores_dataframe, sns):
 def _(plt, scores_dataframe, sns):
     plt.figure(figsize=(12,6))
     plt.subplot(1,2,1)
-    sns.lineplot(data=scores_dataframe, x="NUM_BATS", y="distance travelled", hue="control_type")
+    sns.lineplot(data=scores_dataframe, x="NUM_BATS", y="distance_covered", hue="control_type")
     plt.subplot(1,2,2)
     sns.lineplot(data=scores_dataframe, x="NUM_BATS", y="time_spent_rotating", hue="control_type")
     return
@@ -166,7 +167,8 @@ def _(arena_scaling, scores_dataframe, slider_consistency, slider_param):
 def _(df_slider, plt, sns):
     plt.figure(figsize=(12,6))
     plt.subplot(1,2,1)
-    sns.lineplot(data=df_slider, x="NUM_BATS", y="wall collision total", hue="control_type", errorbar="pi")
+    g1 = sns.lineplot(data=df_slider, x="NUM_BATS", y="wall collision total", hue="control_type", errorbar="pi")
+    g1.set(yscale="log")
     plt.subplot(1,2,2)
     sns.lineplot(data=df_slider, x="NUM_BATS", y="interbat collision total", hue="control_type", errorbar="pi")
     return
@@ -179,6 +181,42 @@ def _(df_slider, plt, sns):
     sns.lineplot(data=df_slider, x="NUM_BATS", y="duration", hue="control_type",  errorbar="pi")
     plt.subplot(1,2,2)
     sns.lineplot(data=df_slider, x="NUM_BATS", y="space_occupied", hue="control_type", errorbar="pi")
+    return
+
+
+@app.cell
+def _(arena_scaling, mo, slider_consistency, slider_param):
+    controls = ["null_control", "negative_control", "positive_control", "treatment"]
+    slider_control = mo.ui.slider(start=0, stop=len(arena_scaling), step=1, label="control type")
+    mo.vstack([slider_param, slider_consistency, slider_control])
+    return controls, slider_control
+
+
+@app.cell
+def _(arena_scaling, controls, scores_dataframe, slider_control, slider_param):
+    df_slider2 = scores_dataframe[(scores_dataframe["arena_size_scaling"]==arena_scaling[slider_param.value])&(scores_dataframe['control_type']==controls[slider_control.value])]
+    return (df_slider2,)
+
+
+@app.cell
+def _(df_slider2, plt, sns):
+    plt.figure(figsize=(12,6))
+    plt.subplot(1,2,1)
+    g3 = sns.lineplot(data=df_slider2, x="NUM_BATS", y="wall collision total", hue="MEMORY_WINDOW_FOR_CONSISTENCY", errorbar="pi")
+    # g2.set(yscale="log")
+    plt.subplot(1,2,2)
+    sns.lineplot(data=df_slider2, x="NUM_BATS", y="duration", hue="MEMORY_WINDOW_FOR_CONSISTENCY", errorbar="pi")
+    return
+
+
+@app.cell
+def _(df_slider, plt, sns):
+    plt.figure(figsize=(12,6))
+    plt.subplot(1,2,1)
+    g2 = sns.lineplot(data=df_slider, x="NUM_BATS", y="wall collision total", hue="MEMORY_WINDOW_FOR_CONSISTENCY", errorbar="pi")
+    # g2.set(yscale="log")
+    plt.subplot(1,2,2)
+    sns.lineplot(data=df_slider, x="NUM_BATS", y="interbat collision total", hue="control_type", errorbar="pi")
     return
 
 

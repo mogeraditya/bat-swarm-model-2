@@ -76,7 +76,7 @@ def merge_summary_files(results_dir, output_file=None):
         ),
         ignore_index=True,
     )
-    merged_df = merged_df.sort_values("job id", ignore_index=True)
+    # merged_df = merged_df.sort_values("job id", ignore_index=True)
     merged_df.to_csv(output_file, index=False)
 
     print(f"merged {len(summary_files)} summary files into {output_file}")

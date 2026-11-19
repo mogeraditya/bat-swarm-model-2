@@ -91,14 +91,14 @@ def run_simulation(cfg: DictConfig) -> None:
         focal_bat=0,
         modules=[
             "arena",
-            # "polarization_milling",
+            "polarization_milling",
             "info_text",
             # "ipi_radial",
             # "sum_radial",
             # "intensity",
         ],
         rows=1,
-        columns=2,
+        columns=3,
     )
 
 

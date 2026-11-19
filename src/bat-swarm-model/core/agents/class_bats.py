@@ -39,7 +39,9 @@ class Bat:
             random.uniform(2, self.parameters_df["ARENA_LENGTH"] - 2),
         )  # randomize initial position placement. you can also reset this in simulation.
 
-        self.direction = Vector().random_direction()  # randomize start direction
+        self.direction = Vector(
+            1, 0
+        )  # Vector().random_direction()  # randomize start direction # TODO : FLAG
         # allocentric axis is set to start direction
         self.allocentric_axis_y = self.direction
 
@@ -251,7 +253,10 @@ class Bat:
         if self.time_since_last_call >= call_interval:
             # if self.id == 0:
             #     print(self.next_direction, self.direction)
-            if str2bool(self.any_consistent_sound):
+            if (
+                str2bool(self.any_consistent_sound)
+                or self.response_type == "repulsion_passive"
+            ):
                 self.next_direction = self.direction
             # sound object to be emitted
             sound = DirectSound(
@@ -694,19 +699,19 @@ class Bat:
             # self.speed = self.parameters_df["BAT_FAST_SPEED"]
             # self.rotation_speed = 0
 
-        # if self.is_bat_rotating:
-        #     self.speed = np.random.normal(
-        #         self.parameters_df["BAT_SLOW_SPEED"], scale=0.5
-        #     )
-        # else:
-        #     self.speed = np.random.normal(
-        #         loc=self.parameters_df["BAT_FAST_SPEED"], scale=1
-        #     )
         if self.is_bat_rotating:
-            self.speed = self.parameters_df["BAT_SLOW_SPEED"]
-
+            self.speed = np.random.normal(
+                self.parameters_df["BAT_SLOW_SPEED"], scale=0.5
+            )
         else:
-            self.speed = self.parameters_df["BAT_FAST_SPEED"]
+            self.speed = np.random.normal(
+                loc=self.parameters_df["BAT_FAST_SPEED"], scale=1
+            )
+        # if self.is_bat_rotating:
+        #     self.speed = self.parameters_df["BAT_SLOW_SPEED"]
+
+        # else:
+        #     self.speed = self.parameters_df["BAT_FAST_SPEED"]
 
         # if self.any_consistent_sound == "no":
         #     self.speed = self.parameters_df["BAT_FAST_SPEED"]
