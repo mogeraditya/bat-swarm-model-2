@@ -28,7 +28,7 @@ CLEANUP_PLOT_DATA: 2000
 SOUND_SPEED: 343
 AIR_ABSORPTION: 1
 seed: 80083
-control_type : "treatment"
+control_type : "positive_control"
 
 # TODO: redundant
 OUTPUT_DIR_FOR_SIMULATION: "BLANK_TEST"
